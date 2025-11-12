@@ -10,7 +10,4 @@ RUN curl -fsSL https://ollama.com/install.sh | sh
 # Expose Ollama default port
 EXPOSE 11434
 
-RUN ollama pull llama3.2
-
-# Serve Ollama to all network interfaces
-CMD ["ollama", "serve", "--host", "0.0.0.0"]
+CMD bash -c "ollama serve & sleep 5 && ollama pull llama3 && wait"
